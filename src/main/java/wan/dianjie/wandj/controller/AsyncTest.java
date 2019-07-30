@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import wan.dianjie.wandj.customannotations.Auth;
 import wan.dianjie.wandj.entidy.User;
 import wan.dianjie.wandj.mapper.UserMapper;
 import wan.dianjie.wandj.service.impl.AsyncServiceImpl;
@@ -28,6 +29,7 @@ public class AsyncTest {
   @Autowired
   UserMapper userMapper;
 
+  @Auth(user = "admin")
   @GetMapping("/asyncTest1")
   public String asyncTest1() throws InterruptedException {
     //测试redis
