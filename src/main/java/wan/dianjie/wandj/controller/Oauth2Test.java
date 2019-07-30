@@ -4,8 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/oauth")
 @RestController
 public class Oauth2Test {
-  @GetMapping("/product/{id}")
-  public String getProduct(@PathVariable String id) {
+  @GetMapping("/product")
+  public String getProduct(@RequestParam String id) {
     //for debug
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     return "product id : " + id;

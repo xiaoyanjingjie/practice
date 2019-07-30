@@ -3,6 +3,7 @@ package wan.dianjie.wandj.config;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.HandlerMethod;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ import wan.dianjie.wandj.mapper.UserMapper;
  * @author wan dianjie
  * @date 2019-07-30 17:41
  */
+@Slf4j
 @Component
 public class Interceptor implements HandlerInterceptor {
   @Autowired
@@ -44,7 +46,7 @@ public class Interceptor implements HandlerInterceptor {
     response.setHeader("Access-Control-Allow-Headers", "x-requested-with,content-type");
     System.out.println("------------------>:已完成跨域处理");
     System.out.println("preHandle");
-
+    log.info("请求的URL为：{}",request.getRequestURL());
 //    if (!handler.getClass().isAssignableFrom(HandlerMethod.class)) {
 //      System.out.println("cat cast handler to HandlerMethod.class");
 //      return true;
