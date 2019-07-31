@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import wan.dianjie.wandj.base.ReturnResult;
 import wan.dianjie.wandj.customannotations.Auth;
 import wan.dianjie.wandj.entidy.User;
 import wan.dianjie.wandj.mapper.UserMapper;
@@ -21,7 +22,7 @@ import wan.dianjie.wandj.service.impl.AsyncServiceImpl;
  * @date 2019-06-03 10:42
  */
 @Slf4j
-@RequestMapping()
+@RequestMapping
 @RestController
 public class AsyncTest {
   @Autowired
@@ -33,7 +34,7 @@ public class AsyncTest {
 
   @Auth(user = "admin")
   @GetMapping("/test/asyncTest1")
-  public String asyncTest1() throws InterruptedException {
+  public ReturnResult asyncTest1() throws InterruptedException {
     //测试redis
     redisTemplate.opsForValue().set("11","11");
     Object object = redisTemplate.opsForValue().get("11");
@@ -49,19 +50,18 @@ public class AsyncTest {
     }
     User u =  userMapper.selectById("402880e74d75c4dd014d75d44af30005");
     log.info("u:{}",u);
-    return "1233";
+    return new ReturnResult<>();
 
   }
   @GetMapping("/login")
-  public String login(@RequestParam String id) throws InterruptedException {
+  public ReturnResult login(@RequestParam String id) throws InterruptedException {
     redisTemplate.opsForValue().set(id,id,10000, TimeUnit.SECONDS);
-    return "登入成功！id:"+id;
+    return new ReturnResult<>( "登入成功！id:"+id);
 
   }
 
   @GetMapping("/testToken")
-  public String testToken() throws InterruptedException {
-    return "token 验证成功！";
-
+  public ReturnResult testToken() throws InterruptedException {
+    return new ReturnResult<>("token 验证成功！");
   }
 }

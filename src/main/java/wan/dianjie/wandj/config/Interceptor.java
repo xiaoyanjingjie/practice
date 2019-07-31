@@ -14,6 +14,7 @@ import org.springframework.messaging.handler.HandlerMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import wan.dianjie.wandj.base.ReturnResult;
 import wan.dianjie.wandj.customannotations.Auth;
 import wan.dianjie.wandj.entidy.User;
 import wan.dianjie.wandj.mapper.UserMapper;
@@ -82,7 +83,7 @@ public class Interceptor implements HandlerInterceptor {
     response.setContentType("text/html; charset=utf-8");
     try {
       writer = response.getWriter();
-      writer.print(json);
+      writer.print(new ReturnResult<>(-1,json));
 
     } catch (IOException e) {
       log.error("response error", e);

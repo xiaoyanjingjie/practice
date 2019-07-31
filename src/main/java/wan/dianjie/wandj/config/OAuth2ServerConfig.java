@@ -1,5 +1,6 @@
 package wan.dianjie.wandj.config;
 
+import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -15,6 +16,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 /**
@@ -53,10 +55,14 @@ public class OAuth2ServerConfig {
     AuthenticationManager authenticationManager;
     @Autowired
     RedisConnectionFactory redisConnectionFactory;
-
+    @Autowired
+    private DataSource dataSource;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+
+//      JdbcClientDetailsService jdbcClientDetailsService = new JdbcClientDetailsService(dataSource);
+//      clients.withClientDetails(jdbcClientDetailsService);
 
 //        password 方案一：明文存储，用于测试，不能用于生产
 //        String finalSecret = "123456";
