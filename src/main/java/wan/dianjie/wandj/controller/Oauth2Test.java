@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2019-07-10 20:45
  */
 @Slf4j
-@RequestMapping("/oauth")
+@RequestMapping("/order")
 @RestController
 public class Oauth2Test {
   @GetMapping("/product")
