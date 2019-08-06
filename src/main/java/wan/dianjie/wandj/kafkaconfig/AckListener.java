@@ -7,7 +7,6 @@ import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.PartitionOffset;
+import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -98,7 +98,7 @@ public class AckListener {
    *
    * , Consumer consumer
    */
-  @KafkaListener(id = "ack", topics = {"ack"},containerFactory = "ackContainerFactory")
+  @KafkaListener(groupId = "wanjieGroup2", topics = {"ack"},containerFactory = "ackContainerFactory")
   public void ackListener(ConsumerRecord<?,?> record, Acknowledgment ack,@Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,@Header(KafkaHeaders.RECEIVED_PARTITION_ID) Integer patitionId,@Header(KafkaHeaders.RECEIVED_TOPIC) String topic,@Header(KafkaHeaders.RECEIVED_TIMESTAMP) Long ts) {
        log.info("ack receive ---====-----: " + record);
     log.info("ack receive Header ---====-----: " +"key :" + key +",patitionId:"+ patitionId +",topic:"+ topic + ",ts:"+ts) ;
