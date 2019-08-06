@@ -1,4 +1,4 @@
-package wan.dianjie.wandj.config;
+package wan.dianjie.wandj.kafkaconfig;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -14,9 +14,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class Listener {
-//  @KafkaListener(topics = {"test"})
-//  public void listen(ConsumerRecord<?, ?> record) {
-//    log.info("kafka的key: " + record.key());
-//    log.info("kafka的value: " + record.value().toString());
-//  }
+  @KafkaListener(topics = {"test"})
+  public void listen(ConsumerRecord<?, ?> record) {
+    log.info("kafka的key: " + record.key());
+    log.info("kafka的value: " + record.value().toString());
+  }
+
 }
