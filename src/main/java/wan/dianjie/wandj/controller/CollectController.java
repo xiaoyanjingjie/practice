@@ -79,11 +79,18 @@ public class CollectController {
       Map map = new HashMap<>();
       map.put(KafkaHeaders.TOPIC, "ack");
       map.put(KafkaHeaders.MESSAGE_KEY, i+"");
-      map.put(KafkaHeaders.PARTITION_ID, 0);
+      map.put(KafkaHeaders.PARTITION_ID, 1);
       map.put(KafkaHeaders.TIMESTAMP, System.currentTimeMillis());
       ListenableFuture ack = kafkaTemplate.send(new GenericMessage<>("test Header",map));
       log.info("acksenf{}:",ack.get());
     }
 
+  }
+
+  @RequestMapping(value = "/acksendbatch", method = RequestMethod.GET)
+  public void testBatch() {
+    for (int i = 0; i < 12; i++) {
+      kafkaTemplate.send("batch", "test batch listener,dataNum-" + i);
+    }
   }
 }

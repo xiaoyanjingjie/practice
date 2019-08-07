@@ -32,7 +32,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class AckListener {
+public class AckKafkaListener {
   @Value("${spring.kafka.bootstrap-servers}")
   private String KAFKA_SERVICE;
 
