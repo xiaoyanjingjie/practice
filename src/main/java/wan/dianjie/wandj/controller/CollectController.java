@@ -90,7 +90,7 @@ public class CollectController {
   @RequestMapping(value = "/acksendbatch", method = RequestMethod.GET)
   public void testBatch() {
     for (int i = 0; i < 12; i++) {
-      kafkaTemplate.send("batch", "test batch listener,dataNum-" + i);
+      kafkaTemplate.send("batch","消费序号 -" + i);
     }
   }
 }
