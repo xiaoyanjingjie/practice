@@ -1,6 +1,7 @@
 package wan.dianjie.wandj.tool.eventbus;
 
 import com.google.common.eventbus.AsyncEventBus;
+import com.google.common.eventbus.EventBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LocalEventBusImpl implements LocalEventBus {
   @Autowired
-  private AsyncEventBus eventBus;
+  private EventBus eventBus;
 
   @Override
   public void post(Event event) {

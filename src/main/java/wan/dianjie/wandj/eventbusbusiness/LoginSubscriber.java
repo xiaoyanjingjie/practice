@@ -13,11 +13,19 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class LoginSubscriber {
-    @Subscribe
+
+  public String uid;
+
+    @Subscribe()
     public void onLogin(LoginEvent event) {
       LoginMsg msg = event.getContent();
-      String uid = msg.getUid();
+       uid = msg.getUid();
       // 具体
-      log.info("进入event 事件");
+      log.info("进入event 事件:"+uid);
+  }
+
+  public String getUid(){
+    log.info("进入event 事件:"+uid);
+    return uid;
   }
 }

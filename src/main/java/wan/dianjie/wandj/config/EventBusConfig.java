@@ -8,6 +8,7 @@ import com.google.common.eventbus.Subscribe;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import lombok.extern.slf4j.Slf4j;
 import org.reflections.Reflections;
 import org.reflections.scanners.MethodAnnotationsScanner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import java.util.Set;
  * @author wan dianjie
  * @date 2019-08-09 15:26
  */
+@Slf4j
 @Component
 public class EventBusConfig {
 
@@ -35,6 +37,7 @@ public class EventBusConfig {
   @Bean
   @ConditionalOnMissingBean(AsyncEventBus.class)
   AsyncEventBus createEventBus() {
+    log.info("-----------------进入--AsyncEventBus-----------------------");
     // 创建一个核心3线程，最大10线程的线程池，配置DiscardPolicy策略，抛弃当前任务
     ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(3,10,60, TimeUnit.SECONDS,new ArrayBlockingQueue<Runnable>(10),new ThreadPoolExecutor.DiscardPolicy());
     //newFixedThreadPool(5)
@@ -56,9 +59,10 @@ public class EventBusConfig {
 
 //  @Bean
 //  @ConditionalOnMissingBean(EventBus.class)
-//  EventBus createEventBus() {
+//  EventBus createEventBus1() {
+//    log.info("-----------------进入--EventBus-----------------------");
 //    EventBus eventBus = new EventBus();
-//    Reflections reflections = new Reflections("wan.xxx", new MethodAnnotationsScanner());
+//    Reflections reflections = new Reflections("wan.dianjie.wandj", new MethodAnnotationsScanner());
 //    Set<Method> methods = reflections.getMethodsAnnotatedWith(Subscribe.class);
 //    if (null != methods ) {
 //      for(Method method : methods) {
