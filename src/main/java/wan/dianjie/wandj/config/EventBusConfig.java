@@ -76,4 +76,18 @@ public class EventBusConfig {
 //
 //    return eventBus;
 //  }
+
+  /**
+   *    @Override
+   * 	public Object postProcessAfterInitialization(final Object bean, final String beanName) throws BeansException {
+   * 		// 查找方法带有@Subscribe注解的类，进行事件监听注册
+   * 		for (Method m : bean.getClass().getMethods()) {
+   * 			if (m.isAnnotationPresent(Subscribe.class)) {
+   * 				log.info("register bean as subscriber by @Subscribe annotation.");
+   * 				this.eventBus.register(bean);
+   * 				this.asyncEventBus.register(bean);
+   * 				break;
+   * 			}
+   * 		}
+   */
 }
