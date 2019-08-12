@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import wan.dianjie.wandj.eventbusbusiness.LoginEvent;
+import wan.dianjie.wandj.eventbusbusiness.LoginEvent01;
 import wan.dianjie.wandj.eventbusbusiness.LoginMsg;
 import wan.dianjie.wandj.eventbusbusiness.LoginSubscriber;
 import wan.dianjie.wandj.tool.eventbus.LocalEventBus;
@@ -32,6 +33,14 @@ public class EventBusController {
   public void bus(){
     LoginMsg msg = new LoginMsg("uid", "mobile", "ip", "osVersion", "deviceModel", "deviceToken");
     localEventBus.post(new LoginEvent(msg));
+    //eventBus.post(new LoginEvent(msg));
+    log.info(l.getUid());
+  }
+
+  @GetMapping("/bus01")
+  public void bus01(){
+    LoginMsg msg = new LoginMsg("uid", "mobile", "ip", "osVersion", "deviceModel", "deviceToken");
+    localEventBus.post(new LoginEvent01(msg));
     //eventBus.post(new LoginEvent(msg));
     log.info(l.getUid());
   }

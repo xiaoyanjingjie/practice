@@ -28,4 +28,11 @@ public class LoginSubscriber {
     log.info("进入event 事件:"+uid);
     return uid;
   }
+  @Subscribe()
+  public void onLogin123(LoginEvent01 event) {
+    LoginMsg msg = event.getContent();
+    uid = "ssss";
+    // 具体
+    log.info("进入event 事件:"+uid);
+  }
 }
