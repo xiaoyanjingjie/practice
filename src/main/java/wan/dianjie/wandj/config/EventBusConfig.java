@@ -50,6 +50,8 @@ public class EventBusConfig {
           eventBus.register(context.getBean(method.getDeclaringClass()));
         }catch (Exception e ) {
           //register subscribe class error
+          eventBus.unregister(this);
+
         }
       }
     }

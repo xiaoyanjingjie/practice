@@ -95,8 +95,8 @@ public class BatchKafkaListener {
     return container;
   }
 
-  @KafkaListener(groupId = "wanjieBatch", clientIdPrefix = "batch", topics = {
-      "batch"}, containerFactory = "batchContainerFactory")
+  //@KafkaListener(groupId = "wanjieBatch", clientIdPrefix = "batch", topics = {
+   //   "batch"}, containerFactory = "batchContainerFactory")
   public void batchListener(List<ConsumerRecord<?,?> > recordList) {
 
     log.info(" --------batch  receive : " + recordList.size());

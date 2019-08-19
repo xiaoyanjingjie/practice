@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.kafka.support.SendResult;
@@ -41,10 +42,9 @@ public class CollectController {
   private KafkaTemplate kafkaTemplate;
   @Autowired
   UserMapper userMapper;
-
   @RequestMapping(value = "/send", method = RequestMethod.GET)
-  public String sendKafka(Page page,HttpServletRequest request, HttpServletResponse response) {
-   IPage page1 = userMapper.selectPage(page,Wrappers.<User>lambdaQuery().ne(User::getId,"s"));
+  public String sendKafka(HttpServletRequest request, HttpServletResponse response) {
+
     try {
       String message = request.getParameter("message");
       log.info("kafka的消息={}",message);
@@ -92,5 +92,13 @@ public class CollectController {
     for (int i = 0; i < 12; i++) {
       kafkaTemplate.send("batch","消费序号 -" + i);
     }
+  }
+  @Cacheable(value = "user",key = "targetClass + methodName")
+  @RequestMapping(value = "/testCache", method = RequestMethod.GET)
+  public void testCache(Page page) {
+    log.info("--------打印分页日志 开始--------------");
+   // IPage page1 = userMapper.selectPage(page,Wrappers.<User>lambdaQuery().ne(User::getId,"s"));
+    userMapper.selectById("402880e74d75c4dd014d75d44af30005");
+    log.info("--------打印分页日志 结束--------------");
   }
 }

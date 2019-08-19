@@ -98,7 +98,7 @@ public class AckKafkaListener {
    *
    * , Consumer consumer
    */
-  @KafkaListener(groupId = "wanjieGroup2", topics = {"ack"},containerFactory = "ackContainerFactory")
+  //@KafkaListener(groupId = "wanjieGroup2", topics = {"ack"},containerFactory = "ackContainerFactory")
   public void ackListener(ConsumerRecord<?,?> record, Acknowledgment ack,@Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,@Header(KafkaHeaders.RECEIVED_PARTITION_ID) Integer patitionId,@Header(KafkaHeaders.RECEIVED_TOPIC) String topic,@Header(KafkaHeaders.RECEIVED_TIMESTAMP) Long ts) {
        log.info("ack receive ---====-----: " + record);
     log.info("ack receive Header ---====-----: " +"key :" + key +",patitionId:"+ patitionId +",topic:"+ topic + ",ts:"+ts) ;
