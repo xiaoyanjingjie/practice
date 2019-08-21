@@ -1,9 +1,9 @@
 package wan.dianjie.wandj.tool.eventbus;
 
-import com.google.common.eventbus.AsyncEventBus;
 import com.google.common.eventbus.EventBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import wan.dianjie.wandj.config.log.LogServiceFilter;
 
 /**
  * @author wan dianjie
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class LocalEventBusImpl implements LocalEventBus {
   @Autowired
   private EventBus eventBus;
-
+  @LogServiceFilter("ddddddddd33fffff")
   @Override
   public void post(Event event) {
     if (null != event) {

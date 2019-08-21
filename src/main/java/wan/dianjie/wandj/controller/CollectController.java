@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.cache.CacheProperties.Redis;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
@@ -95,10 +96,11 @@ public class CollectController {
   }
   @Cacheable(value = "user",key = "targetClass + methodName")
   @RequestMapping(value = "/testCache", method = RequestMethod.GET)
-  public void testCache(Page page) {
+  public User testCache(Page page) {
     log.info("--------打印分页日志 开始--------------");
    // IPage page1 = userMapper.selectPage(page,Wrappers.<User>lambdaQuery().ne(User::getId,"s"));
-    userMapper.selectById("402880e74d75c4dd014d75d44af30005");
+   User u = userMapper.selectById("402880e74d75c4dd014d75d44af30005");
     log.info("--------打印分页日志 结束--------------");
+    return u;
   }
 }

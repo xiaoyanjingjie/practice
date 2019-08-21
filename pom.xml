@@ -128,12 +128,12 @@
       <artifactId>spring-security-oauth2</artifactId>
       <version>2.3.6.RELEASE</version>
     </dependency>
-    <dependency>
-      <groupId>com.vaadin.external.google</groupId>
-      <artifactId>android-json</artifactId>
-      <version>0.0.20131108.vaadin1</version>
-      <scope>compile</scope>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>com.vaadin.external.google</groupId>-->
+      <!--<artifactId>android-json</artifactId>-->
+      <!--<version>0.0.20131108.vaadin1</version>-->
+      <!--<scope>compile</scope>-->
+    <!--</dependency>-->
 
     <!--spring boot2 使用guava EventBus https://www.jianshu.com/p/4efbfdc01cf6-->
     <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
@@ -159,7 +159,20 @@
       <artifactId>spring-boot-starter-cache</artifactId>
     </dependency>
 
+    <!-- AOP依赖 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.59</version>
+    </dependency>
   </dependencies>
+
+
 <!---->
   <build>
     <plugins><!---->
