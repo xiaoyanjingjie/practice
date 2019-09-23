@@ -26,7 +26,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Slf4j
 @Configuration
-public class AppConfigurer implements WebMvcConfigurer {
+public class InterceptorAndFilterConfigurer implements WebMvcConfigurer {
 
   @Bean
   public HandlerInterceptor getMyInterceptor() {
@@ -36,7 +36,7 @@ public class AppConfigurer implements WebMvcConfigurer {
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     log.info("********addInterceptors添加成功！*************");
-    registry.addInterceptor(getMyInterceptor()).addPathPatterns("/**").excludePathPatterns("/login/**","/static/*","/order/**");
+    registry.addInterceptor(getMyInterceptor()).addPathPatterns("/**").excludePathPatterns("/login/**","/static/*","/order/**","/es/**");
   }
 
   @Override

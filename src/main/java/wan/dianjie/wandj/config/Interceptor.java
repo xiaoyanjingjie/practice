@@ -54,18 +54,8 @@ public class Interceptor implements HandlerInterceptor {
     System.out.println("------------------>:已完成跨域处理");
     System.out.println("preHandle");
     log.info("请求的URL为：{}",request.getRequestURL());
-//    if (!handler.getClass().isAssignableFrom(HandlerMethod.class)) {
-//      System.out.println("cat cast handler to HandlerMethod.class");
-//      return true;
-//    }
-    // 获取注解
-//    Auth auth = ((HandlerMethod) handler).getMethod().getAnnotation(Auth.class);
-//    if (auth == null) {
-//      System.out.println("cant find @Auth in this uri:" + request.getRequestURI());
-//      return true;
-//    }
     // 从参数中取出用户身份并验证
-    //User admin = userMapper.selectOne(Wrappers.<User>lambdaQuery().eq(User::getId,request.getParameter("id")));
+   // User admin = userMapper.selectOne(Wrappers.<User>lambdaQuery().eq(User::getId,request.getParameter("id")));
     String token = request.getHeader("token");
     if (!token.equals(redisTemplate.opsForValue().get(token))) {
       System.out.println("permission denied");

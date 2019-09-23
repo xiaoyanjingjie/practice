@@ -17,6 +17,7 @@
 
   <properties>
     <java.version>1.8</java.version>
+    <elasticsearch.version>6.2.2</elasticsearch.version>
   </properties>
 
   <dependencies>
@@ -110,7 +111,7 @@
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpclient</artifactId>
-      <version>4.3.5</version>
+      <version>4.5.8</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -177,6 +178,30 @@
       <artifactId>hutool-all</artifactId>
       <version>4.6.4</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-elasticsearch -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.elasticsearch.plugin</groupId>-->
+      <!--<artifactId>transport-netty4-client</artifactId>-->
+      <!--<version>6.2.2</version>-->
+    <!--</dependency>-->
+
+    <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-elasticsearch -->
+    <!--<dependency>-->
+      <!--<groupId>org.springframework.data</groupId>-->
+      <!--<artifactId>spring-data-elasticsearch</artifactId>-->
+      <!--<version>3.1.10.RELEASE</version>-->
+    <!--</dependency>-->
+
+    <!--<dependency>-->
+      <!--<groupId>org.elasticsearch</groupId>-->
+      <!--<artifactId>elasticsearch</artifactId>-->
+      <!--<version>6.2.2</version>-->
+    <!--</dependency>-->
+
   </dependencies>
 
 
