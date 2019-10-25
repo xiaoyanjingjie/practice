@@ -30,7 +30,8 @@ public class MyFilter implements Filter {
     HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) servletResponse);
     if(hrequest.getRequestURI().indexOf("/index") != -1 ||
         hrequest.getRequestURI().indexOf("/oauth") != -1 ||
-        hrequest.getRequestURI().indexOf("/login") != -1
+        hrequest.getRequestURI().indexOf("/login") != -1 ||
+        hrequest.getRequestURI().indexOf("/job") != -1
 
     ) {
       filterChain.doFilter(servletRequest, servletResponse);

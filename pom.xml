@@ -18,6 +18,8 @@
   <properties>
     <java.version>1.8</java.version>
     <elasticsearch.version>6.2.2</elasticsearch.version>
+    <quartz.version>2.2.3</quartz.version>
+
   </properties>
 
   <dependencies>
@@ -31,7 +33,11 @@
       <artifactId>commons-pool2</artifactId>
     </dependency>
 
-
+    <!--用来渲染页面 -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -201,7 +207,29 @@
       <!--<artifactId>elasticsearch</artifactId>-->
       <!--<version>6.2.2</version>-->
     <!--</dependency>-->
+    <!--quartz-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-quartz</artifactId>
+    </dependency>
 
+    <!--quartz相关依赖-->
+    <!--<dependency>-->
+      <!--<groupId>org.quartz-scheduler</groupId>-->
+      <!--<artifactId>quartz</artifactId>-->
+      <!--<version>${quartz.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.quartz-scheduler</groupId>-->
+      <!--<artifactId>quartz-jobs</artifactId>-->
+      <!--<version>${quartz.version}</version>-->
+    <!--</dependency>-->
+    <!--分页插件-->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>5.0.0</version>
+    </dependency>
   </dependencies>
 
 

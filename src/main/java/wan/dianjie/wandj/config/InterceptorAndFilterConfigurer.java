@@ -36,7 +36,7 @@ public class InterceptorAndFilterConfigurer implements WebMvcConfigurer {
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     log.info("********addInterceptors添加成功！*************");
-    registry.addInterceptor(getMyInterceptor()).addPathPatterns("/**").excludePathPatterns("/login/**","/static/*","/order/**","/es/**");
+    registry.addInterceptor(getMyInterceptor()).excludePathPatterns("/login/**","/view/**","/order/**","/es/**","/quartz/**","/job/**","/error").addPathPatterns("/**");
   }
 
   @Override
