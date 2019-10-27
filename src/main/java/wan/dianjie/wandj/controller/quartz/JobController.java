@@ -37,7 +37,7 @@ import wan.dianjie.wandj.tool.tool.DateUnit;
  */
 
 @RestController
-@RequestMapping(value = "job")
+@RequestMapping(value = "/view/job")
 @Slf4j
 public class JobController {
 
@@ -99,31 +99,35 @@ public class JobController {
   }
 
   //Simple Trigger
-  public void addSimpleJob(JobInfo jobInfo) throws Exception {
+  public void addSimpleJob(JobInfo jobInfo) {
 
     // 启动调度器
-    scheduler.start();
-
-    //构建job信息
-    JobDetail jobDetail = JobBuilder.newJob(getClass(jobInfo.getJobClassName()).getClass())
-        .withIdentity(jobInfo.getJobClassName(), jobInfo.getJobGroupName())
-        .build();
-
-    DateBuilder.IntervalUnit verDate = dateUnit.verification(jobInfo.getTimeType());
-    SimpleTrigger simpleTrigger = (SimpleTrigger) TriggerBuilder.newTrigger()
-        .withIdentity(jobInfo.getJobClassName(), jobInfo.getJobGroupName())
-        .startAt(futureDate(Integer.parseInt(jobInfo.getCronExpression()), verDate))
-        .forJob(jobInfo.getJobClassName(), jobInfo.getJobGroupName())
-        .build();
-
     try {
-      scheduler.scheduleJob(jobDetail, simpleTrigger);
+      scheduler.start();
+      //构建job信息
+      JobDetail jobDetail = JobBuilder.newJob(getClass(jobInfo.getJobClassName()).getClass())
+          .withIdentity(jobInfo.getJobClassName(), jobInfo.getJobGroupName())
+          .build();
 
+      DateBuilder.IntervalUnit verDate = dateUnit.verification(jobInfo.getTimeType());
+      SimpleTrigger simpleTrigger = (SimpleTrigger) TriggerBuilder.newTrigger()
+          .withIdentity(jobInfo.getJobClassName(), jobInfo.getJobGroupName())
+          .startAt(futureDate(Integer.parseInt(jobInfo.getCronExpression()), verDate))
+          .forJob(jobInfo.getJobClassName(), jobInfo.getJobGroupName())
+          .build();
 
+      try {
+        scheduler.scheduleJob(jobDetail, simpleTrigger);
+      } catch (SchedulerException e) {
+        System.out.println("创建定时任务失败" + e);
+      }
     } catch (SchedulerException e) {
-      System.out.println("创建定时任务失败" + e);
-      throw new Exception("创建定时任务失败");
+      e.printStackTrace();
+    } catch (Exception e) {
+      e.printStackTrace();
     }
+
+
   }
 
   /**

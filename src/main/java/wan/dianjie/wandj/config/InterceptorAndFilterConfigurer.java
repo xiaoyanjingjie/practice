@@ -4,16 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * 我们还要注册一下此拦截器才能被springboot检测到，
@@ -36,7 +30,7 @@ public class InterceptorAndFilterConfigurer implements WebMvcConfigurer {
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     log.info("********addInterceptors添加成功！*************");
-    registry.addInterceptor(getMyInterceptor()).excludePathPatterns("/login/**","/view/**","/order/**","/es/**","/quartz/**","/job/**","/error").addPathPatterns("/**");
+    registry.addInterceptor(getMyInterceptor()).excludePathPatterns("/login/**","/**","/view/**","/order/**","/es/**","/quartz/**","/job/**","/error").addPathPatterns("/**");
   }
 
   @Override
