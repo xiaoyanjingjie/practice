@@ -1,10 +1,15 @@
 package wan.dianjie.wandj.controller;
 
+import java.util.Collection;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,9 +64,14 @@ public class AsyncTest {
     return new ReturnResult<>( "登入成功！id:"+id);
 
   }
-
+  //@PreAuthorize("hasRole('ROLE_ADMIN')")
   @GetMapping("/testToken")
   public ReturnResult testToken() throws InterruptedException {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    if (authentication == null) {
+      //return false;
+    }
+    Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
     return new ReturnResult<>("token 验证成功！");
   }
 }

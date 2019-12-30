@@ -92,6 +92,7 @@ public class BatchKafkaListener {
     container.setBatchListener(true);
     //轮训的超时时间
     container.getContainerProperties().setPollTimeout(3000);
+    container.setAutoStartup(false);
     return container;
   }
 

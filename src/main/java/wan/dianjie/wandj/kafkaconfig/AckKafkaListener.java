@@ -55,6 +55,7 @@ public class AckKafkaListener {
   public ConcurrentKafkaListenerContainerFactory ackContainerFactory() {
     ConcurrentKafkaListenerContainerFactory factory = new ConcurrentKafkaListenerContainerFactory();
     factory.setConsumerFactory(new DefaultKafkaConsumerFactory(consumerProps()));
+    factory.setAutoStartup(false);
     factory.getContainerProperties().setAckMode(AckMode.MANUAL_IMMEDIATE);
     return factory;
   }

@@ -15,18 +15,6 @@ public class WandjApplicationTests{
 
   @Test
   public void kk(){
-    Class<?> class1 = null;
-    System.out.println("11111");
-//    try {
-//      class1 = Class.forName("wan.dianjie.wandj.jobs.NewJob");
-//      System.out.println(class1.newInstance());
-//    } catch (ClassNotFoundException e) {
-//      e.printStackTrace();
-//    } catch (IllegalAccessException e) {
-//      e.printStackTrace();
-//    } catch (InstantiationException e) {
-//      e.printStackTrace();
-//    }
 
   }
 
