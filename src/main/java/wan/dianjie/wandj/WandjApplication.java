@@ -10,10 +10,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-/**
- * 添加oauth 权限注解
- * https://blog.csdn.net/weixin_44516305/article/details/87860966
- */
+
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableAsync
 @EnableCaching
