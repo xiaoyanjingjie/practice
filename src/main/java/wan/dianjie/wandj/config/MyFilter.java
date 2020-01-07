@@ -10,7 +10,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 /**
  * 配置过滤器
@@ -21,9 +23,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MyFilter implements Filter {
 
+  @SneakyThrows
   @Override
   public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
-      FilterChain filterChain) throws IOException, ServletException {
+      FilterChain filterChain) {
     System.out.println("================================================"+servletRequest.getServletContext());
     log.info("================================================进入过滤器==============================================================================");
     HttpServletRequest hrequest = (HttpServletRequest)servletRequest;
@@ -34,8 +37,10 @@ public class MyFilter implements Filter {
         hrequest.getRequestURI().indexOf("/job") != -1
 
     ) {
-      filterChain.doFilter(servletRequest, servletResponse);
+      throw new MyException("抛出自定义异常");
+     // filterChain.doFilter(servletRequest, servletResponse);
     }else {
+
       wrapper.sendRedirect("/login");
     }
   }
