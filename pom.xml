@@ -244,6 +244,26 @@
 <!--      <version>6.0.0</version>-->
 <!--    </dependency>-->
 
+    <!--此方式对代码侵入性较高，需要在接口调用的地方通过try-catch风格的API对代码进行包装：-->
+    <dependency>
+      <groupId>com.alibaba.csp</groupId>
+      <artifactId>sentinel-core</artifactId>
+      <version>1.7.0</version>
+    </dependency>
+     <!--上述通过try-catch风格的API可以实现限流，但是对代码侵入性太高，推荐使用注解的方式来实现。下文若不做注明，默认都会采用注解的方式实现。-->
+    <dependency>
+      <groupId>com.alibaba.csp</groupId>
+      <artifactId>sentinel-annotation-aspectj</artifactId>
+      <version>1.7.0</version>
+    </dependency>
+    <!--接入控制台 -Dproject.name=sentinel-demo -Dcsp.sentinel.dashboard.server=127.0.0.1:8080 -Dcsp.sentinel.api.port=8719 -->
+    <dependency>
+      <groupId>com.alibaba.csp</groupId>
+      <artifactId>sentinel-transport-simple-http</artifactId>
+      <version>1.7.0</version>
+    </dependency>
+
+
    </dependencies>
 
 

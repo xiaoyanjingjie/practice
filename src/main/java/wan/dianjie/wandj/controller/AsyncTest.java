@@ -1,5 +1,6 @@
 package wan.dianjie.wandj.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import java.util.Collection;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -58,6 +59,7 @@ public class AsyncTest {
     return new ReturnResult<>();
 
   }
+  @SentinelResource(value = "login")
   @GetMapping("/login")
   public ReturnResult login(@RequestParam String id) throws InterruptedException {
     redisTemplate.opsForValue().set(id,id,10000, TimeUnit.SECONDS);

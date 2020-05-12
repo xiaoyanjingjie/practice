@@ -23,6 +23,7 @@ public class MyTestFilter implements Filter {
   @Override
   public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
       FilterChain filterChain) throws IOException, ServletException {
+    //throw new MyException("测试自定义异常");
     filterChain.doFilter(servletRequest, servletResponse);
   }
 }

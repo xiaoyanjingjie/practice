@@ -1,6 +1,7 @@
 package wan.dianjie.wandj;
 
 import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
 import java.util.ArrayList;
 
@@ -11,12 +12,8 @@ import java.util.ArrayList;
 public class wan {
 
   public static void main(String[] args) {
-    String templateField = null;
-    JSONArray templateArr = JSONArray.parseArray(templateField);
-    if(ArrayUtil.isNotEmpty(templateArr)){
-      System.out.println(templateArr.size());
-
-    }
-
+//    StringUtil.
+    System.out.println(StrUtil.sub("18641241027",0,4));
+    ;
   }
 }

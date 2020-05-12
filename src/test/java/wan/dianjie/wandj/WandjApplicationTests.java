@@ -5,8 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.test.context.junit4.SpringRunner;
-import wan.dianjie.wandj.jobs.NewJob;
-import wan.dianjie.wandj.service.quartz.BaseJob;
+
 
 @EnableScheduling
 @RunWith(SpringRunner.class)
